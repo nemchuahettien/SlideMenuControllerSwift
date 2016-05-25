@@ -12,6 +12,8 @@ import UIKit
     optional func leftDidOpen()
     optional func leftWillClose()
     optional func leftDidClose()
+    optional func leftWillDragBegin()
+    optional func leftDidDragEnd()
     optional func rightWillOpen()
     optional func rightDidOpen()
     optional func rightWillClose()
@@ -365,7 +367,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             } else {
                 self.delegate?.leftWillClose?()
             }
-            
+            self.delegate?.leftWillDragBegin?()
             LeftPanState.frameAtStartOfPan = leftContainerView.frame
             LeftPanState.startPointOfPan = panGesture.locationInView(view)
             LeftPanState.wasOpenAtStartOfPan = isLeftOpen()
@@ -390,6 +392,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             if LeftPanState.lastState != .Changed {
                 return
             }
+            self.delegate?.leftDidDragEnd?()
             let velocity:CGPoint = panGesture.velocityInView(panGesture.view)
             let panInfo: PanInfo = panLeftResultInfoForVelocity(velocity)
             
