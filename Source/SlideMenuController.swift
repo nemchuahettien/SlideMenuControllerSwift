@@ -389,10 +389,11 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             applyLeftOpacity()
             applyLeftContentViewScale()
         case UIGestureRecognizerState.Ended, UIGestureRecognizerState.Cancelled:
+            self.delegate?.leftDidDragEnd?()
             if LeftPanState.lastState != .Changed {
                 return
             }
-            self.delegate?.leftDidDragEnd?()
+            
             let velocity:CGPoint = panGesture.velocityInView(panGesture.view)
             let panInfo: PanInfo = panLeftResultInfoForVelocity(velocity)
             
