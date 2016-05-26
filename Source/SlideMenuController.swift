@@ -18,7 +18,7 @@ import UIKit
     optional func rightDidOpen()
     optional func rightWillClose()
     optional func rightDidClose()
-    optional func isMenuMoving()
+    optional func menuMoving()
 }
 
 public enum SlideStyle {
@@ -387,7 +387,7 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             if SlideMenuOptions.slideStyle == SlideStyle.Divide {
                 self.mainViewController?.view.layer.frame = CGRect(x: leftContainerView.frame.origin.x + SlideMenuOptions.leftViewWidth, y: leftContainerView.frame.origin.y, width: self.mainViewController!.view.frame.width, height: self.mainViewController!.view.frame.height)
             }
-            self.delegate?.isMenuMoving!()
+            self.delegate?.menuMoving!()
             applyLeftOpacity()
             applyLeftContentViewScale()
         case UIGestureRecognizerState.Ended, UIGestureRecognizerState.Cancelled:
