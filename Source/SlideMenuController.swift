@@ -85,6 +85,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public var rightPanGesture: UIPanGestureRecognizer?
     public var rightTapGesture: UITapGestureRecognizer?
     
+    override public func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
