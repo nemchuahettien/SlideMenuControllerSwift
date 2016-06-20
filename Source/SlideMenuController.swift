@@ -44,6 +44,7 @@ public struct SlideMenuOptions {
     public static var simultaneousGestureRecognizers: Bool = true
     public static var opacityViewBackgroundColor: UIColor = UIColor.blackColor()
     public static var slideStyle: SlideStyle = SlideStyle.Overlap
+    public static var showStatusBar: Bool = true
 }
 
 public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
@@ -86,7 +87,12 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
     public var rightTapGesture: UITapGestureRecognizer?
     
     override public func prefersStatusBarHidden() -> Bool {
-        return false
+        if SlideMenuOptions.showStatusBar {
+            return false
+        }
+        else {
+            return true
+        }
     }
     
     public required init?(coder aDecoder: NSCoder) {
