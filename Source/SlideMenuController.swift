@@ -319,10 +319,10 @@ public class SlideMenuController: UIViewController, UIGestureRecognizerDelegate 
             leftPanGesture = nil
         }
         
-        if leftTapGesture != nil {
-            view.removeGestureRecognizer(leftTapGesture!)
-            leftTapGesture = nil
-        }
+//        if leftTapGesture != nil {
+//            view.removeGestureRecognizer(leftTapGesture!)
+//            leftTapGesture = nil
+//        }
     }
     
     public func removeRightGestures() {
